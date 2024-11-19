@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="Calculator">
+        <h1>@Why<span>Vincent</span></h1>
+        <div class="display">
+            <input type="text" class="display-input" readonly>
+        </div>
+        <div class="buttons">
+            <!--Row 1-->
+            <button class="btn">AC</button>
+            <button class="btn">(</button>
+            <button class="btn">)</button>
+            <button class="btn">%</button>
+            
+            
+            <!--Row 2-->
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn">X</button>
+            <!--row 3-->
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn">-</button>
+
+            <!--Row 4-->
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">+</button>
+            
+            <!--row 5-->
+            <button class="btn">C</button>
+            <button class="btn">0</button>
+            <button class="btn">.</button>
+            <button class="btn">=</button>
+        </div>
+    </div>
+    <script>
+        const display = document.querySelector('.display-input');
+        const buttons = document.querySelectorAll('.btn');
+        let currentInput = '';
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const value = button.textContent;
+    
+                if (value === '=') {
+                    try {
+                        currentInput = eval(currentInput);
+                    } catch {
+                        currentInput = 'Error';
+                    }
+                } else if (value === 'C') {
+                    currentInput = '';
+                }else if(value === 'AC'){
+                    currentInput = currentInput.slice(0, -1);
+                } else {
+                    currentInput += value;
+                }
+    
+                display.value = currentInput;
+            });
+        });
+    </script>
+    
+        
+</body>
+</html>
